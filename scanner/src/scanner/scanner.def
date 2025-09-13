@@ -1,0 +1,6 @@
+LIBRARY scanner
+EXPORTS
+    ??0MalwareScanner@@QEAA@XZ
+    ??1MalwareScanner@@QEAA@XZ
+    ?LoadMalwareBase@MalwareScanner@@QEAA_NAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z
+    ?ScanDirectory@MalwareScanner@@QEAA?AUScanResult@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0_K@Z
