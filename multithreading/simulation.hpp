@@ -1,5 +1,6 @@
 #pragma once
 
+#include <atomic>
 #include <memory>
 #include <thread>
 #include <vector>
@@ -11,7 +12,7 @@ private:
     std::vector<std::unique_ptr<Entity>> entities; // список сущностей
     std::vector<std::thread> threads; // потоки, где они выполняются
     MessageQueue messageQueue; // общая очередь сообщений
-    bool running; // флаг работы
+    std::atomic<bool> running; // флаг работы
 public:
     Simulation() : running(false) {}
     ~Simulation() { stop(); }
