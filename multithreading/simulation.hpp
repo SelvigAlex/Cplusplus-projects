@@ -16,7 +16,6 @@ private:
 public:
     Simulation() : running(false) {}
     ~Simulation() { stop(); }
-
     void addEntity(std::unique_ptr<Entity> entity); // добавить объект
     void start(); // запустить все потоки
     void stop(); // корректно завершить работу
