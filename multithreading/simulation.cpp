@@ -5,6 +5,14 @@ void Simulation::addEntity(std::unique_ptr<Entity> entity) {
     entities.emplace_back(std::move(entity));
 }
 
+MessageQueue& Simulation::getMessageQueue() {
+    return messageQueue;
+}
+
+std::atomic<bool>& Simulation::getRunning() {
+    return running;
+}
+
 void Simulation::start() {
     running = true;
     for (auto& entity : entities) {

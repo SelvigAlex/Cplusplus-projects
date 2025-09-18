@@ -17,6 +17,8 @@ public:
     Simulation() : running(false) {}
     ~Simulation() { stop(); }
     void addEntity(std::unique_ptr<Entity> entity); // добавить объект
+    MessageQueue& getMessageQueue();
+    std::atomic<bool>& getRunning();
     void start(); // запустить все потоки
     void stop(); // корректно завершить работу
     void processMessage(); // обработка сообщений

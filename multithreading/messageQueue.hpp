@@ -32,7 +32,7 @@ private:
     std::condition_variable cv; // "будить" потоки
     bool closed = false; // флаг, помечающий, что очередь закрывается
 public:
-    void push(const Message& msg); // положить сообщение
+    void push(Message msg); // положить сообщение
     bool pop(Message& msg); // забрать сообщение (с блокировкой, ждать если пусто)
     bool tryPop(Message& msg); // неблокировать
     void close(); // пометить очередь закрытой и разбудить все ожидающие потоки

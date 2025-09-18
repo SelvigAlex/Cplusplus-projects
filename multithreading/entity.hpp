@@ -14,16 +14,14 @@ private:
 protected:
     std::atomic<bool>& running;
 public:
-  Entity(std::size_t id, const std::string& name, MessageQueue &messageQueue, std::atomic<bool>& runFlag);
-  virtual void run() = 0; //  метод, выполняющийся в потоке
-  void send(const Message& msg); // отправка сообещний в очередь
-  std::size_t getId() const;
-  virtual ~Entity() = default;
+    Entity(std::size_t id, const std::string& name, MessageQueue &messageQueue, std::atomic<bool>& runFlag);
+    virtual void run() = 0; //  метод, выполняющийся в потоке
+    void send(const Message& msg); // отправка сообещний в очередь
+    std::size_t getId() const; // геттер для id
+    virtual ~Entity() = default;
 };
 
-
 // конкретные сущности
-
 class Bus : public Entity {
 private:
     int routeNumber;

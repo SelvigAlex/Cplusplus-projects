@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.sela": "cpp",
+        "atomic": "cpp",
+        "format": "cpp",
+        "queue": "cpp",
+        "thread": "cpp",
+        "vector": "cpp"
+    }
+}

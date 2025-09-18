@@ -1,12 +1,23 @@
 #include "messageQueue.hpp"
 #include <stdexcept>
 #include <string>
+#include <iomanip>
+// #include <thread>
 
 Message::Message(const MessageType& type, const std::string& message, int senderId)
     : type(type), message(message), senderId(senderId) {}
 
 std::string Message::toString() {
     std::string str;
+
+    // добавляем текущее время
+    auto time = std::chrono::system_clock::now();
+    std::time_t time_t = std::chrono::system_clock::to_time_t(time);
+    std::tm tm = *std::localtime(&time_t);
+    std::ostringstream oss;
+    oss << std::put_time(&tm, "%H:%M:%S");
+    str += "[" + oss.str() + "]";
+
     switch (type) {
     case MessageType::INFO:
         str += "[INFO]";
@@ -24,11 +35,19 @@ std::string Message::toString() {
         str += "[UNKNOWN]";
         break;
     }
-    str += std::to_string(senderId) + " " + message;
+
+    // // добавляем id потока
+    // auto threadId = std::this_thread::get_id();
+    // std::ostringstream threadIdStream;
+    // threadIdStream << threadId;
+    // str += "[Thread " + threadIdStream.str() + "]";
+
+
+    str += "[Entity " + std::to_string(senderId) + "] " + message;
     return str;
 }
 
-void MessageQueue::push(const Message& msg) {
+void MessageQueue::push(Message msg) {
     std::lock_guard<std::mutex> lock(mtx); // блокируем мьютекс для потокобезопасности
     if (closed) {
         throw std::runtime_error("MessageQueue is closed. Cannot push new messages.");
