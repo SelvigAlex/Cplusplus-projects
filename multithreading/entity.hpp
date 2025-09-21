@@ -45,3 +45,11 @@ public:
     DataServer(std::size_t id, const std::string& name, MessageQueue& mq, const std::string& ipAddress, std::atomic<bool>& runFlag);
     void run() override;
 };
+
+class Market : public Entity {
+private:
+    double price;
+public:
+    Market(std::size_t id, const std::string& name, MessageQueue& mq, double price, std::atomic<bool>& runFlag);
+    void run() override;
+};

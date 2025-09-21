@@ -43,7 +43,7 @@ std::string Message::toString() {
     // str += "[Thread " + threadIdStream.str() + "]";
 
 
-    str += "[Entity " + std::to_string(senderId) + "] " + message;
+    str += "[Entity " + std::to_string(senderId) + "]" + message;
     return str;
 }
 

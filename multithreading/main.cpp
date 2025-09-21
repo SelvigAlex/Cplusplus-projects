@@ -14,6 +14,7 @@ int main() {
     // создаем сущности - сервер и электростанция
     simulation.addEntity(std::make_unique<PowerPlant>(4, "Nuclear Plant", simulation.getMessageQueue(), 1000, simulation.getRunning()));
     simulation.addEntity(std::make_unique<DataServer>(5, "Main Server", simulation.getMessageQueue(), "192.168.1.1", simulation.getRunning()));
+    simulation.addEntity(std::make_unique<Market>(6, "Store", simulation.getMessageQueue(), 5000., simulation.getRunning()));
 
     simulation.start();
     std::this_thread::sleep_for(std::chrono::seconds(10));
